@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage
+    x:Class="AppViva.Views.DashboardView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ctrl="clr-namespace:AppViva.Controls"
+    xmlns:pages="clr-namespace:AppViva.Views"
+    xmlns:vm="clr-namespace:AppViva.ViewModels"
+    vm:ViewModelLocator.AutoWireViewModel="True"
+    BackgroundColor="{StaticResource BackgroundColor}">
+
+    <!--  This page works as parent of every tabbed page  -->
+
+    <!--<TabbedPage.ToolbarItems>
+        <ctrl:HideableToolbarItem
+            Name="Notifications"
+            Command="{Binding OpenNotificationsCommand}"
+            IconPlatform="bell"
+            Order="Primary"
+            Priority="1"
+            Text="{Binding [DashboardNotifications]}" />
+    </TabbedPage.ToolbarItems>-->
+
+    <!--  Pages can be added as references or inline  -->
+
+    <TabbedPage.Title>
+        <OnPlatform
+            x:TypeArguments="BindingBase"
+            Android="{Binding [Nothing]}"
+            WinPhone="{Binding [DashboardAppTitle]}"
+            iOS="{Binding [DashboardAppTitle]}" />
+    </TabbedPage.Title>
+
+    <TabbedPage.Children>
+        <!--<pages:HomeView />
+        <pages:ChatView />
+        <pages:RequestsView />
+        <pages:SettingsDashboardView />-->
+    </TabbedPage.Children>
+</TabbedPage>

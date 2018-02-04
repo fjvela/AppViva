@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<v:BaseContentPage
+    x:Class="AppViva.Views.AllClassesView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:beh="clr-namespace:AppViva.Behaviors"
+    xmlns:ctrl="clr-namespace:AppViva.Controls"
+    xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
+    xmlns:v="clr-namespace:AppViva.Views"
+    xmlns:vm="clr-namespace:AppViva.ViewModels"
+    Padding="15,30,15,30"
+    vm:ViewModelLocator.AutoWireViewModel="True">
+    -->
+    <!--BackgroundColor="{StaticResource LightSilver}"-->
+
+    <!--  NewsList list  -->
+    <!--FlowItemTappedCommand="{Binding ChooseNewCommand}"-->
+
+
+    <flv:FlowListView
+        x:Name="NewsFlowListView"
+        FlowColumnCount="1"
+        FlowItemsSource="{Binding ClassList}"
+        HasUnevenRows="true"
+        HorizontalOptions="FillAndExpand"
+        RowHeight="214">
+
+        <flv:FlowListView.FlowLoadingTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <Label
+                            HorizontalTextAlignment="Center"
+                            VerticalTextAlignment="Center"
+                            TextColor="Black"
+                            Text="Loading..."
+                        ></Label>
+                    <ctrl:CustomActivityIndicatorControl VerticalOptions="Center" />
+
+                </ViewCell>
+            </DataTemplate>
+        </flv:FlowListView.FlowLoadingTemplate>
+
+        <flv:FlowListView.FlowEmptyTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <Label
+                            HorizontalTextAlignment="Center"
+                            VerticalTextAlignment="Center"
+                            TextColor="Black"
+                            Text="Empty Cell"
+                        ></Label>
+
+                </ViewCell>
+            </DataTemplate>
+        </flv:FlowListView.FlowEmptyTemplate>
+
+        <flv:FlowListView.FlowColumnTemplate>
+            <DataTemplate>
+                <StackLayout
+                    Margin="7"
+                    BackgroundColor="White"
+                    VerticalOptions="Fill">
+                    <Label
+                        Margin="5"
+                        FontAttributes="Bold"
+                        Text="{Binding Name}"
+                        TextColor="Black"
+                        VerticalOptions="Start" />
+                    <Label
+                        Margin="5"
+                        Text="{Binding SpacesAvailableDesc}"
+                        TextColor="Black"
+                        VerticalOptions="Start" />
+
+                    <Label
+                        Margin="5"
+                        Text="{Binding StartTime}"
+                        TextColor="Black"
+                        VerticalOptions="Start" />
+                    <Button
+                                    IsVisible="{Binding IsBooked, Converter={StaticResource InverseBoolConverter}}"
+                                    Command="{Binding SignInCommand}"
+                                    HorizontalOptions="Center"
+                                    Text="Reservar"
+                                    VerticalOptions="Center" />
+                    <Button
+                                    IsVisible="{Binding IsBooked}"
+                                    Command="{Binding SignInCommand}"
+                                    HorizontalOptions="Center"
+                                    Text="Cancel"
+                                    VerticalOptions="Center" />
+
+
+                </StackLayout>
+            </DataTemplate>
+        </flv:FlowListView.FlowColumnTemplate>
+    </flv:FlowListView>
+</v:BaseContentPage>

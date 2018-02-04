@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<v:BaseContentPage
+            x:Class="AppViva.Views.LoginView"
+            xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:ctrl="clr-namespace:AppViva.Controls"
+            xmlns:v="clr-namespace:AppViva.Views"
+            xmlns:vm="clr-namespace:AppViva.ViewModels"
+            vm:ViewModelLocator.AutoWireViewModel="True"
+            NavigationPage.HasNavigationBar="false"
+           >
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="Center">
+            <Label Text="{Binding [UserName]}" />
+            <Entry Text="{Binding Login}"/>
+            <Label Text="{Binding [Password]}" />
+            <Entry x:Name="passwordEntry" IsPassword="true"  Text="{Binding Password}"/>
+
+
+            <Button
+            Command="{Binding SignInCommand}"
+            HorizontalOptions="Center"
+            Text="{Binding [Login]}"
+            VerticalOptions="Center" />
+
+
+            <ctrl:CustomActivityIndicatorControl VerticalOptions="Center" />
+
+        </StackLayout>
+    </ContentPage.Content>
+</v:BaseContentPage>

@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<vPop:PopupPage
+     x:Class="AppViva.Views.Popups.EquipamentListPopupView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ctrl="clr-namespace:AppViva.Controls"
+    xmlns:vPop="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    BackgroundColor="{StaticResource SeeThrough}"
+    CloseWhenBackgroundIsClicked="False">
+    <Frame Style="{StaticResource PopupFrameStyle}">
+        <Grid ColumnSpacing="0" RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="60" />
+            </Grid.RowDefinitions>
+            <Picker x:Name="pickerEquipment"
+                    Grid.Row="1" 
+                    Title="Select a monkey" 
+                    ItemsSource="{Binding ListEquipment}" 
+                    ItemDisplayBinding="{Binding BicycleNo}" 
+                    SelectedItem="{Binding SelectedEquiment}"/>
+
+            
+            <Button
+                Grid.Row="3"
+                Margin="0,1,0,0"
+                Command="{Binding SelectedCommand}"
+                Style="{StaticResource ButtonWhiteStyle}"
+                Text="{Binding [Select]}" />
+
+        </Grid>
+    </Frame>
+</vPop:PopupPage>

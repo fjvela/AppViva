@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary
+    x:Class="AppViva.Resources.LabelStyles"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:res="clr-namespace:AppViva.Resources"
+    MergedWith="res:GlobalDefinitions">
+
+    <Style x:Key="ValidationErrorLabelStyle" TargetType="{x:Type Label}">
+        <Setter Property="TextColor" Value="{StaticResource ErrorColor}" />
+        <Setter Property="FontSize" Value="{StaticResource LittleSize}" />
+    </Style>
+
+    <Style x:Key="GreyLabelStyle" TargetType="{x:Type Label}">
+        <Setter Property="TextColor" Value="{StaticResource GreyText}" />
+    </Style>
+
+    <Style x:Key="GreenLabelStyle" TargetType="{x:Type Label}">
+        <Setter Property="TextColor" Value="{StaticResource TextGreenColor}" />
+    </Style>
+
+    <Style x:Key="DarkGreyLabelStyle" TargetType="{x:Type Label}">
+        <Setter Property="TextColor" Value="{StaticResource DarkGreyTextColor}" />
+    </Style>
+    <Style x:Key="LightGreyLabelStyle" TargetType="{x:Type Label}">
+        <Setter Property="TextColor" Value="{StaticResource LightGraySubtitle}" />
+    </Style>
+
+    <Style
+        x:Key="DarkGreyBigTitleLabelStyle"
+        BasedOn="{StaticResource DarkGreyLabelStyle}"
+        TargetType="{x:Type Label}">
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="FontSize" Value="{StaticResource BigSize}" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="Margin" Value="20, 12" />
+    </Style>
+
+    <Style
+        x:Key="DarkGreyMidLargeSizeTitleLabelStyle"
+        BasedOn="{StaticResource GreyLabelStyle}"
+        TargetType="{x:Type Label}">
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="FontSize" Value="{StaticResource MidLargeSize}" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="Margin" Value="20, 12" />
+    </Style>
+
+    <Style
+        x:Key="DarkGreyMediumSizeTitleLabelStyle"
+        BasedOn="{StaticResource DarkGreyLabelStyle}"
+        TargetType="{x:Type Label}">
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="FontSize" Value="{StaticResource MediumSize}" />
+    </Style>
+
+    <Style
+        x:Key="DarkGreyMidLargeSizeSubtitleLabelStyle"
+        BasedOn="{StaticResource GreyLabelStyle}"
+        TargetType="{x:Type Label}">
+        <Setter Property="FontAttributes" Value="Italic" />
+        <Setter Property="FontSize" Value="{StaticResource LargeSize}" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="Margin" Value="20, 12" />
+    </Style>
+
+    <Style
+        x:Key="DarkGreyMediumSizeSubtitleLabelStyle"
+        BasedOn="{StaticResource GreyLabelStyle}"
+        TargetType="{x:Type Label}">
+        <Setter Property="FontAttributes" Value="Italic" />
+        <Setter Property="FontSize" Value="{StaticResource MediumSize}" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="Margin" Value="20, 12" />
+    </Style>
+
+    <Style
+        x:Key="DarkGreyLargeSubtitleLabelStyle"
+        BasedOn="{StaticResource DarkGreyLabelStyle}"
+        TargetType="{x:Type Label}">
+        <Setter Property="FontAttributes" Value="Italic" />
+        <Setter Property="FontSize" Value="{StaticResource LargeSize}" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="Margin" Value="20, 12" />
+    </Style>
+
+    <Style
+        x:Key="LightGreyMediumTitleLabelStyle"
+        BasedOn="{StaticResource LightGreyLabelStyle}"
+        TargetType="{x:Type Label}">
+        <Setter Property="FontSize" Value="{StaticResource MidLargeSize}" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="Margin" Value="20, 12" />
+    </Style>
+
+    <Style
+        x:Key="TitleLabelStyleNormal"
+        BasedOn="{StaticResource GreyLabelStyle}"
+        TargetType="{x:Type Label}">
+        <Setter Property="FontSize" Value="{StaticResource LargeSize}" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+    </Style>
+
+    <Style
+        x:Key="SubTitleLabelStyle"
+        BasedOn="{StaticResource GreyLabelStyle}"
+        TargetType="{x:Type Label}">
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="FontSize" Value="{StaticResource MediumSize}" />
+        <Setter Property="Margin" Value="0,6,0,3" />
+    </Style>
+
+    <Style
+        x:Key="SubTitleLabelStyleNormal"
+        BasedOn="{StaticResource SubTitleLabelStyle}"
+        TargetType="{x:Type Label}">
+        <Setter Property="FontAttributes" Value="None" />
+        <Setter Property="Margin" Value="0" />
+    </Style>
+
+    <Style
+        x:Key="SubTitleLabelItalicStyle"
+        BasedOn="{StaticResource SubTitleLabelStyle}"
+        TargetType="{x:Type Label}">
+        <Setter Property="FontAttributes" Value="Italic" />
+        <Setter Property="Margin" Value="0" />
+    </Style>
+
+    <Style
+        x:Key="SubTitleLabelStyleCentered"
+        BasedOn="{StaticResource SubTitleLabelStyle}"
+        TargetType="{x:Type Label}">
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+        <Setter Property="Margin" Value="15" />
+    </Style>
+
+    <Style
+        x:Key="NormalLabelStyle"
+        BasedOn="{StaticResource GreyLabelStyle}"
+        TargetType="{x:Type Label}">
+        <Setter Property="FontSize" Value="{StaticResource MediumSize}" />
+    </Style>
+
+    <Style
+        x:Key="MediumLabelStyle"
+        BasedOn="{StaticResource GreyLabelStyle}"
+        TargetType="{x:Type Label}">
+        <Setter Property="FontSize" Value="{StaticResource MidMediumSize}" />
+    </Style>
+
+    <Style
+        x:Key="MediumLabelLightGreyStyle"
+        BasedOn="{StaticResource MediumLabelStyle}"
+        TargetType="{x:Type Label}">
+        <Setter Property="TextColor" Value="{StaticResource LightGrey2}" />
+    </Style>
+
+    <Style
+        x:Key="DarkGreyTitleStyle"
+        BasedOn="{StaticResource DarkGreyLabelStyle}"
+        TargetType="{x:Type Label}">
+        <Setter Property="FontSize" Value="{StaticResource LargeSize}" />
+    </Style>
+
+    <Style
+        x:Key="DarkGreyMediumLabelStyle"
+        BasedOn="{StaticResource DarkGreyLabelStyle}"
+        TargetType="{x:Type Label}">
+        <Setter Property="FontSize" Value="{StaticResource MidMediumSize}" />
+    </Style>
+
+    <Style
+        x:Key="GreenMidLargeSizeTitleLabelStyle"
+        BasedOn="{StaticResource GreenLabelStyle}"
+        TargetType="{x:Type Label}">
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="FontSize" Value="{StaticResource MidLargeSize}" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="Margin" Value="20, 12" />
+    </Style>
+</ResourceDictionary>

@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<v:BaseCarouselPage  
+    x:Class="AppViva.Views.AllClassesView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:beh="clr-namespace:AppViva.Behaviors"
+    xmlns:ctrl="clr-namespace:AppViva.Controls"
+    xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
+    xmlns:v="clr-namespace:AppViva.Views"
+    xmlns:vm="clr-namespace:AppViva.ViewModels"
+    Padding="15,30,15,30"
+    Title="Classes"
+    vm:ViewModelLocator.AutoWireViewModel="True"
+    ItemsSource="{Binding Pages}">
+    <!--<StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">-->
+
+        <CarouselPage.ItemTemplate>
+            <DataTemplate>
+                <ContentPage >
+                    <ctrl:CustomActivityIndicatorControl VerticalOptions="Center" />
+
+                    <StackLayout VerticalOptions="FillAndExpand">
+
+                        <Label Text="{Binding Date, StringFormat='{0:D}'}" />
+
+                        <flv:FlowListView
+                        x:Name="ClassFlowListView"
+                        FlowColumnCount="2"
+                        FlowItemsSource="{Binding ClassList}"
+                        FlowItemTappedCommand="{Binding ChooseItemCommand}"
+                        HasUnevenRows="true"
+                        HorizontalOptions="FillAndExpand"
+                        RowHeight="214">
+
+                            <flv:FlowListView.FlowLoadingTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Label
+                            HorizontalTextAlignment="Center"
+                            VerticalTextAlignment="Center"
+                            TextColor="Black"
+                            Text="Loading..."></Label>
+                                        <ctrl:CustomActivityIndicatorControl VerticalOptions="Center" />
+                                    </ViewCell>
+                                </DataTemplate>
+                            </flv:FlowListView.FlowLoadingTemplate>
+
+                            <flv:FlowListView.FlowEmptyTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Label
+                            HorizontalTextAlignment="Center"
+                            VerticalTextAlignment="Center"
+                            TextColor="Black"
+                            Text="{Binding [NoClasses]}"></Label>
+
+                                    </ViewCell>
+                                </DataTemplate>
+                            </flv:FlowListView.FlowEmptyTemplate>
+
+                            <flv:FlowListView.FlowColumnTemplate>
+                                <DataTemplate>
+                                    <StackLayout
+                                    Margin="7"
+                                    BackgroundColor="White"
+                                    VerticalOptions="Fill">
+                                        <Label
+                                        Margin="5"
+                                        FontAttributes="Bold"
+                                        Text="{Binding Name}"
+                                        TextColor="Black"
+                                        VerticalOptions="Start" />
+
+                                        <Label
+                                        Margin="5"
+                                        Text="{Binding SpacesAvailableDesc}"
+                                        TextColor="Black"
+                                        VerticalOptions="Start" 
+                                        IsVisible="{Binding IsFull}"/>
+
+
+                                        <Label
+                                        Margin="5"
+                                        Text="Full"
+                                        TextColor="Black"
+                                        VerticalOptions="Start" 
+                                        IsVisible="{Binding IsFull, Converter={StaticResource InverseBoolConverter}}"/>
+
+
+                                        <Label
+                                        Margin="5"
+                                        Text="{Binding StartTime}"
+                                        TextColor="Black"
+                                        VerticalOptions="Start" />
+
+                                        <!--<Button Text="+" FontAttributes="Bold" 
+                                            FontSize="Large"
+                                            WidthRequest="40"
+                                            HeightRequest="40" BorderRadius="20" BorderWidth="2" BorderColor="Black"/>-->
+
+                                        <!--<ctrl:ClassButton
+                                        Class="{Binding .}"
+                                         HorizontalOptions="Center"
+                                    Text="Reservar"
+                                    VerticalOptions="Center" />-->
+
+                                        <ctrl:ClassButton BackgroundColor="#76dab2" 
+                                    TitleText="Reservar" 
+                                     ClassData="{Binding .}"
+                                    />
+                                        <!--<Label Text="{Binding ., Converter={StaticResource detailsCvt}}" FontSize="Small" TextColor="Gray" />-->
+
+
+
+                                        <!--<Button
+                                    IsVisible="{Binding IsBooked, Converter={StaticResource InverseBoolConverter}}"
+                                Command="{Binding BindingContext.CancelBookingCommand, Source={x:Reference AllClassesView}}"                
+                                CommandParameter="{Binding}" 
+                                    HorizontalOptions="Center"
+                                    Text="Reservar"
+                                    VerticalOptions="Center" />
+                                <Button
+                                    IsVisible="{Binding IsBooked}"
+                                    Command="{Binding CancelBookingCommand}"
+                                    HorizontalOptions="Center"
+                                    Text="Cancel"
+                                    VerticalOptions="Center" />-->
+
+
+                                    </StackLayout>
+                                </DataTemplate>
+                            </flv:FlowListView.FlowColumnTemplate>
+                        </flv:FlowListView>
+                    </StackLayout>
+                </ContentPage>
+            </DataTemplate>
+        </CarouselPage.ItemTemplate>
+    <!--</StackLayout>-->
+</v:BaseCarouselPage>

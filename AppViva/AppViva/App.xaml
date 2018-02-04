@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppViva.App"
+            xmlns:cv="clr-namespace:AppViva.Converters"
+            xmlns:res="clr-namespace:AppViva.Resources">
+    <Application.Resources>
+        <ResourceDictionary MergedWith="res:ControlStyles">
+
+            <!--  CONVERTERS  -->
+            <!--<cv:InfoWindowClickedEventArgsConverter x:Key="InfoWindowClickedEventArgsConverter" />
+            <cv:MapPinClickedConverter x:Key="MapPinClickedConverter" />-->
+            <cv:InverseBoolConverter x:Key="InverseBoolConverter" />
+            <!--<cv:ClassBackgroudConverter x:Key="ClassBackgroudConverter" />-->
+
+            <!--<cv:FirstValidationErrorConverter x:Key="FirstValidationErrorConverter" />
+            <cv:ImagePlatformConverter x:Key="ImagePlatformConverter" />
+            <cv:TextChangeEventArgsConverter x:Key="TextChangeEventArgsConverter" />
+            <cv:IsNotNullConverter x:Key="IsNotNullConverter" />
+            <cv:IsNullConverter x:Key="IsNullConverter" />
+            <cv:ItemTappedEventArgsConverter x:Key="ItemTappedEventArgsConverter" />
+            <cv:ToggledEventArgsConverter x:Key="ToggledEventArgsConverter" />
+            <cv:GenderToImageConverter x:Key="GenderToImageConverter" />-->
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

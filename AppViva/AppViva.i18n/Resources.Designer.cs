@@ -115,6 +115,15 @@ namespace AppViva.i18n {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Select bike.
+        /// </summary>
+        public static string SelectBike {
+            get {
+                return ResourceManager.GetString("SelectBike", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email.
         /// </summary>
         public static string UserName {

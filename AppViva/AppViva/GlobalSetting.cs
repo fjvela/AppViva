@@ -21,5 +21,15 @@ namespace AppViva
         {
             APIEndPoint = "https://localhost:1921/";
         }
+
+        public static DateTime MaxDateTimeBook
+        {
+            get { return DateTime.Now.AddDays(2).Date; }
+        }
+
+        public static DateTime MinDateTimeBook
+        {
+            get { return DateTime.Now.AddHours(-1); }
+        }
     }
 }

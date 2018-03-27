@@ -21,11 +21,11 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>MinimumOSVersion</key>
-	<string>11.1</string>
+	<string>8.0</string>
 	<key>CFBundleDisplayName</key>
 	<string>AppViva</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.yourcompany.AppViva</string>
+	<string>com.companyvela.AppViva</string>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
 	<key>CFBundleIconFiles</key>

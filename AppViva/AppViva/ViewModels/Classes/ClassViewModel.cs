@@ -1,6 +1,7 @@
 ﻿using AppViva.Models;
 using AppViva.Services;
 using AppViva.ViewModels.Popups;
+using Microsoft.AppCenter.Analytics;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -26,7 +27,7 @@ namespace AppViva.ViewModels
             Date = classModel.Date;
             ClassList = new ObservableCollection<ClassModel>(classModel.ClubClasses);
 
-            
+
 
 
 
@@ -73,11 +74,14 @@ namespace AppViva.ViewModels
             {
                 ClassBookResult classResult = null;
 
+                
                 if (classSelected.IsBooked)
                 {
+                    
+
                     classResult = await classService.CancelBookingAsync(loginInfo.Token, loginInfo.ContractPersonId, classSelected.Id, default(CancellationToken));
                 }
-                else
+                else if (classSelected.CanBook)
                 {
                     if (classSelected.IsSpinning)
                     {
@@ -94,7 +98,9 @@ namespace AppViva.ViewModels
 
                     }
                 }
-                await ShowBookingResult(classResult);
+                Analytics.TrackEvent($"Class book: {classSelected}: {classResult?.Result}");
+                if (classResult != null)
+                    await ShowBookingResult(classResult);
             });
 
 
@@ -124,9 +130,9 @@ namespace AppViva.ViewModels
             selectEquipment.ItemSelected -= SelectEquipment_ItemSelectedAsync;
             await NavigationService.HidePopupAsync();
             ClassBookResult classResult = await classService.AddBookingAsync(
-                loginInfo.Token, 
+                loginInfo.Token,
                 loginInfo.ContractPersonId,
-                classSelected.Id, 
+                classSelected.Id,
                 default(CancellationToken),
                 e.Id);
 

@@ -1,6 +1,7 @@
 ﻿using AppViva.Extensions;
 using AppViva.Models;
 using AppViva.Services;
+using Microsoft.AppCenter.Analytics;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -37,7 +38,7 @@ namespace AppViva.ViewModels
         private ObservableCollection<ClassViewModel> pages;
         public ObservableCollection<ClassViewModel> Pages { get { return pages; } set { Set(ref pages, value); } }
 
-    
+
         #endregion
 
 
@@ -45,7 +46,7 @@ namespace AppViva.ViewModels
 
         #region Private Methods
 
-     
+
         private async Task FillClassesAsync(CancellationToken cancelToken)
         {
             //var classes = (await classService.GetListAsync()).ToList();
@@ -55,39 +56,12 @@ namespace AppViva.ViewModels
 
             if (classes.Any())
             {
-                //// ClassList.SyncExact(classes);
-                //List<ContentPage> aux = new List<ContentPage>();
-                //ContentPage page;
-                //foreach (var item in classes)
-                //{
-                //    page = new ContentPage();
-                //    page.BindingContext = new ClassViewModel(item);
-                //    aux.Add(page);
-                // }
-                //Pages.SyncExact(aux);
-
                 Pages = new ObservableCollection<ClassViewModel>(classes.Select(p => new ClassViewModel(classService, p)));
-
-
             }
-        }
-
-        private async Task TryToUpdateNewsAsync(CancellationToken cancelToken)
-        {
-            //var today = DateTime.Today.ToUniversalTime();
-            //int numItemsRequired = NewsDataService.MaxItems;
-            //if (Settings.LastNewsChecked != today || NewsDataService.Count < numItemsRequired)
-            //{
-            //    var news = await NewsService.GetNewsAsync(cancelToken, numItemsRequired);
-
-            //    foreach (var newData in news.Reverse())
-            //    {
-            //        await NewsDataService.InsertOrUpdateAsync(newData);
-            //    }
-            //    NewsList.SyncExact(news);
-
-            //    Settings.LastNewsChecked = today;
-            //}
+            else
+            {
+                Analytics.TrackEvent("No classes!");
+            }
         }
         #endregion
     }

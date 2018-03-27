@@ -2,10 +2,11 @@
 using Xamarin.Forms;
 using DLToolkit.Forms.Controls;
 using AppViva.ViewModels;
-using System.Threading.Tasks;
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
+using Microsoft.AppCenter.Distribute;
+using Microsoft.AppCenter.Push;
 
 namespace AppViva
 {
@@ -34,7 +35,7 @@ namespace AppViva
 
         }
 
-    
+
 
         private void InitNavigation()
         {
@@ -49,10 +50,16 @@ namespace AppViva
                 InitNavigation();
             }
 
+
             AppCenter.Start("android=1c988543-0715-4c99-b660-dbaf0e210557;",
-                   typeof(Analytics), 
-                   typeof(Crashes));
+                   typeof(Analytics),
+                   typeof(Crashes),
+                   typeof(Distribute)
+                   );
+
         }
+
+
 
         protected override void OnSleep()
         {

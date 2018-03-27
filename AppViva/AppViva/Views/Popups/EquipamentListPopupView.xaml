@@ -17,7 +17,7 @@
             </Grid.RowDefinitions>
             <Picker x:Name="pickerEquipment"
                     Grid.Row="1" 
-                    Title="Select a monkey" 
+                    Title="{Binding [SelectBike]}"
                     ItemsSource="{Binding ListEquipment}" 
                     ItemDisplayBinding="{Binding BicycleNo}" 
                     SelectedItem="{Binding SelectedEquiment}"/>

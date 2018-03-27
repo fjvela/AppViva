@@ -73,10 +73,10 @@
 
                                         <Label
                                         Margin="5"
-                                        Text="{Binding SpacesAvailableDesc}"
+                                        Text="{Binding SpacesInfo}"
                                         TextColor="Black"
                                         VerticalOptions="Start" 
-                                        IsVisible="{Binding IsFull}"/>
+                                        IsVisible="{Binding IsFull, Converter={StaticResource InverseBoolConverter}}"/>
 
 
                                         <Label
@@ -84,7 +84,7 @@
                                         Text="Full"
                                         TextColor="Black"
                                         VerticalOptions="Start" 
-                                        IsVisible="{Binding IsFull, Converter={StaticResource InverseBoolConverter}}"/>
+                                        IsVisible="{Binding IsFull}"/>
 
 
                                         <Label

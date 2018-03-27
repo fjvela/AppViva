@@ -135,6 +135,9 @@
   <data name="Select" xml:space="preserve">
     <value>Select</value>
   </data>
+  <data name="SelectBike" xml:space="preserve">
+    <value>Select bike</value>
+  </data>
   <data name="UserName" xml:space="preserve">
     <value>Email</value>
   </data>

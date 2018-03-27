@@ -10,7 +10,7 @@
             NavigationPage.HasNavigationBar="false"
            >
     <ContentPage.Content>
-        <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="Center">
+        <StackLayout VerticalOptions="CenterAndExpand" Padding="10">
             <Label Text="{Binding [UserName]}" />
             <Entry Text="{Binding Login}"/>
             <Label Text="{Binding [Password]}" />
@@ -19,7 +19,6 @@
 
             <Button
             Command="{Binding SignInCommand}"
-            HorizontalOptions="Center"
             Text="{Binding [Login]}"
             VerticalOptions="Center" />
 

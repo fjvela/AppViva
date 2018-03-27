@@ -62,13 +62,14 @@ namespace AppViva.Controls
                 control.BackgroundColor = Color.Red;
                 control.title.Text = "Cancelar";
             }
-            else
+            else if (data.IsBookingAllowed)
             {
 
                 control.BackgroundColor = Color.FromHex("#76dab2");
                 control.title.Text = "Reservar";
 
             }
+        
         }
 
         public ClassModel ClassData

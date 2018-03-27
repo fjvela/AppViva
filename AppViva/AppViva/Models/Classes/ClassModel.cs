@@ -49,21 +49,30 @@ namespace AppViva.Models
         }
         public bool CanBook
         {
-            get { return !IsBooked && IsFull; }
+            get { return !IsBooked && !IsFull && ClassDateTime < GlobalSetting.MaxDateTimeBook && ClassDateTime > GlobalSetting.MinDateTimeBook; }
         }
 
         public bool IsFull
         {
-            get { return SpacesAvailable > 0; }
+            get { return SpacesAvailable == 0; }
         }
         public DateTime ClassDateTime
         {
             get
             {
-                DateTime date =  DateTime.ParseExact(StartTime, "HH:mm",
+                DateTime date = DateTime.ParseExact(StartTime, "HH:mm",
                                         CultureInfo.InvariantCulture);
 
                 return ClassDate.Add(date.TimeOfDay);
+            }
+        }
+        public string SpacesInfo
+        {
+            get
+            {
+                string aux = string.Join(" / ", SpacesAvailable, TotalSpaces);
+                return $"{SpacesAvailableDesc} ({aux})";
+
             }
         }
     }

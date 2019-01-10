@@ -44,7 +44,7 @@ namespace AppViva.Services
         {
             UriBuilder uribuilder = new UriBuilder(GlobalSetting.Instance.APIEndPoint)
             {
-                Path = "/Class/ListDailyClubClassesForPerson",
+                Path = "/Class/ListClubClassesForPerson", 
                 Query = $"classDate={dateStart:yyyy-MM-dd}&clubNo={clubNo}&contractPersonId={contractPersonId}",
             };
 
@@ -56,7 +56,7 @@ namespace AppViva.Services
             
             UriBuilder uribuilder = new UriBuilder(GlobalSetting.Instance.APIEndPoint)
             {
-                Path = "/Class/ListWeeklyClubClassesForPerson",
+                Path = "Class/ListClubClassesForPerson",
                 Query = $"classDateFrom={dateStart:yyyy-MM-dd}&clubNo={clubNo}&contractPersonId={contractPersonId}&noOfDays=7&studioNo=0",
             };
 

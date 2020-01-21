@@ -5,7 +5,6 @@ using System.Text;
 
 namespace AppViva.Models
 {
-
     public class ClassModel
     {
         public int Id { get; set; }
@@ -40,6 +39,7 @@ namespace AppViva.Models
         public bool DhowDelete { get; set; }
         public bool IsHoAdmin { get; set; }
         public bool MaxClassesBookedToday { get; set; }
+
         public bool ShowButton
         {
             get
@@ -47,6 +47,7 @@ namespace AppViva.Models
                 return (IsBooked || (CanBook));
             }
         }
+
         public bool CanBook
         {
             get { return !IsBooked && !IsFull && ClassDateTime < GlobalSetting.MaxDateTimeBook && ClassDateTime > GlobalSetting.MinDateTimeBook; }
@@ -56,6 +57,7 @@ namespace AppViva.Models
         {
             get { return SpacesAvailable == 0; }
         }
+
         public DateTime ClassDateTime
         {
             get
@@ -66,17 +68,14 @@ namespace AppViva.Models
                 return ClassDate.Add(date.TimeOfDay);
             }
         }
+
         public string SpacesInfo
         {
             get
             {
                 string aux = string.Join(" / ", SpacesAvailable, TotalSpaces);
                 return $"{SpacesAvailableDesc} ({aux})";
-
             }
         }
     }
-
-
-
 }

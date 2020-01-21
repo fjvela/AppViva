@@ -6,7 +6,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -17,25 +16,23 @@ namespace AppViva.ViewModels
 {
     public class ClassViewModel : ViewModelBase
     {
+        private ClassModel classSelected;
         private IClassService classService;
         private EquipamentListPopupViewModel selectEquipment;
-        private ClassModel classSelected;
 
         public ClassViewModel(IClassService classService, ClassWeeklyModel classModel)
         {
             this.classService = classService;
             Date = classModel.Date;
             ClassList = new ObservableCollection<ClassModel>(classModel.ClubClasses);
-
-
-
-
-
         }
 
-        #region Properties 
+        #region Properties
 
+        private DateTime _date;
         private Command chooseItemCommand;
+        private ObservableCollection<ClassModel> classList;
+
         public ICommand ChooseItemCommand
         {
             get
@@ -45,20 +42,19 @@ namespace AppViva.ViewModels
             }
         }
 
-
-        private DateTime _date;
-        public DateTime Date
-        {
-            get { return _date; }
-            set { Set(ref _date, value); }
-        }
-        private ObservableCollection<ClassModel> classList;
         public ObservableCollection<ClassModel> ClassList
         {
             get { return classList; }
             set { Set(ref classList, value); }
         }
-        #endregion
+
+        public DateTime Date
+        {
+            get { return _date; }
+            set { Set(ref _date, value); }
+        }
+
+        #endregion Properties
 
         #region Private methods
 
@@ -68,17 +64,12 @@ namespace AppViva.ViewModels
             classSelected = obj as ClassModel;
             var loginInfo = GlobalSetting.Instance.LoginInfo;
 
-
-
             result = ExecuteOperationAsync(async () =>
             {
                 ClassBookResult classResult = null;
 
-                
                 if (classSelected.IsBooked)
                 {
-                    
-
                     classResult = await classService.CancelBookingAsync(loginInfo.Token, loginInfo.ContractPersonId, classSelected.Id, default(CancellationToken));
                 }
                 else if (classSelected.CanBook)
@@ -95,32 +86,12 @@ namespace AppViva.ViewModels
                     else
                     {
                         classResult = await classService.AddBookingAsync(loginInfo.Token, loginInfo.ContractPersonId, classSelected.Id, default(CancellationToken));
-
                     }
                 }
                 Analytics.TrackEvent($"Class book: {classSelected}: {classResult?.Result}");
                 if (classResult != null)
                     await ShowBookingResult(classResult);
             });
-
-
-            //return result;
-
-        }
-
-        private async Task ShowBookingResult(ClassBookResult classResult)
-        {
-            if (classResult != null)
-            {
-                await NavigationService.ShowPopupAsync(
-                    new MessageBoxPopupViewModel()
-                    {
-                        Title = "",
-                        Subtitle = classResult.Result
-                    });
-
-                //selectedNew.IsBooked = true;
-            }
         }
 
         private async void SelectEquipment_ItemSelectedAsync(object sender, EquipamentEventArgs e)
@@ -136,12 +107,22 @@ namespace AppViva.ViewModels
                 default(CancellationToken),
                 e.Id);
 
-
             await ShowBookingResult(classResult);
-
-
         }
 
-        #endregion
+        private async Task ShowBookingResult(ClassBookResult classResult)
+        {
+            if (classResult != null)
+            {
+                await NavigationService.ShowPopupAsync(
+                    new MessageBoxPopupViewModel()
+                    {
+                        Title = "",
+                        Subtitle = classResult.Result
+                    });
+            }
+        }
+
+        #endregion Private methods
     }
 }
